@@ -57,6 +57,28 @@ describe('Rank A Flush', function() {
   });
 });
 
+/**
+ * test for straight 
+ */
+describe('Rank A Straight', function() {
+  it('Return straight when hand given', function() {
+  var hand = new PokerHand('5c 6h 7d 8c 9s');
+  
+    assert.equal(hand.getRank(), 'Straight');
+  });
+});
+
+/**
+ * test for straight flush
+ */
+describe('Rank A Straight Flush', function() {
+  it('Return straight flush when hand given', function() {
+  var hand = new PokerHand('5c 6c 7c 8c 9c');
+  
+    assert.equal(hand.getRank(), 'Straight Flush');
+  });
+});
+
 
 
 /**

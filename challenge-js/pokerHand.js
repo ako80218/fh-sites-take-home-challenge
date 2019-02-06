@@ -45,14 +45,24 @@ class PokerHand {
     })
 
     return filteredSuits.length === 1 ? true : false;
+  }
 
+  isStraight(arr){
+
+    function isOneGreater(element, index, arr){
+
+      return index === arr.length - 1 || parseInt(element , 10) + 1  === parseInt(arr[index + 1], 10);
+
+    }
+
+    return arr.every(isOneGreater);
 
   }
 
 
-    
+
   getRank() {
-    //define string to hold hand ranking stays High Card if none of the below conditions are met
+    //define string to hold hand ranking stays High Card if none of the below conditions are met.
     let resultString = "High Card";
 
     //Handle malformed string  or incomplete hand with message
@@ -60,7 +70,6 @@ class PokerHand {
         return "Not a hand!";
     }
     
-    //
     let ranks = this.getCardValues(this.cardsArray, 'ranks');
 
     let rankOccurances = this.occurrencesOf(ranks);
@@ -87,6 +96,15 @@ class PokerHand {
     if( this.isFlush() ){
       resultString = "Flush";    
     } 
+
+    if ( this.isStraight(ranks.sort()) ){
+      resultString = "Straight";      
+
+    }
+
+    if ( this.isStraight(ranks.sort()) && this.isFlush() ){
+      resultString = "Straight Flush";      
+    }
 
     if( ranks.sort().join('') === "10AJKQ"  && this.isFlush()){
       resultString = "Royal Flush";
