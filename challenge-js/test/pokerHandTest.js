@@ -37,11 +37,108 @@ describe('Rank Two Pair', function() {
  * test
  */
 describe('Rank A Flush', function() {
+  it('Return flush when hand given', function() {
   var hand = new PokerHand('Kh Qh 6h 2h 9h');
 
-  it('Return flush when hand given', function() {
     assert.equal(hand.getRank(), 'Flush');
   });
 });
 
 // More tests go here
+
+/**
+ * test again for flush
+ */
+describe('Rank A Flush', function() {
+  it('Return flush when hand given', function() {
+  var hand = new PokerHand('Kc 10c 6c 3c 9c');
+  
+    assert.equal(hand.getRank(), 'Flush');
+  });
+});
+
+
+
+/**
+ * test for short hand
+ */
+describe('Handle a short hand', function() {
+  var hand = new PokerHand('Kh Qh 6h 2h');
+
+  it('Return "Not a hand!" when short hand given', function() {
+    assert.equal(hand.getRank(), 'Not a hand!');
+  });
+});
+
+/**
+ * test for long hand
+ */
+describe('Handle a long hand', function() {
+  var hand = new PokerHand('Kh Qh 6h 2h 9h 8c');
+
+  it('Return "Not a hand!" when long hand given', function() {
+    assert.equal(hand.getRank(), 'Not a hand!');
+  });
+});
+
+/**
+ * test for malformed string
+ */
+describe('Handle a malformed string', function() {
+  var hand = new PokerHand('KhQh6h 2h');
+
+  it('Return "Not a hand!" when malformed string given', function() {
+    assert.equal(hand.getRank(), 'Not a hand!');
+  });
+});
+
+/**
+ * test for three of a kind
+ */
+describe('Rank Three of a Kind', function() {
+  it('Return three of a kind when hand given', function() {
+    var hand = new PokerHand('10h 10c 10s 3h 2d');
+
+    assert.equal(hand.getRank(), 'Three of a Kind');
+  });
+});
+
+/**
+ * test for four of a kind
+ */
+describe('Rank Four of a Kind', function() {
+  it('Return four of a kind when hand given', function() {
+    var hand = new PokerHand('Kh Kc Ks 3h Kd');
+
+    assert.equal(hand.getRank(), 'Four of a Kind');
+  });
+});
+
+
+
+
+/**
+ * test for full house
+ */
+describe('Rank Full House', function() {
+  it('Return three of a kind when hand given', function() {
+    var hand = new PokerHand('10h 10c 10s 2h 2d');
+
+    assert.equal(hand.getRank(), 'Full House');
+  });
+});
+
+
+/**
+ * test for high card
+ */
+describe('Rank High Card', function() {
+  it('Return high card when hand given', function() {
+    var hand = new PokerHand('Kh Js 10c 6h 3d');
+
+    assert.equal(hand.getRank(), 'High Card');
+  });
+});
+
+
+
